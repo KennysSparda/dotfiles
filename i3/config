@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:Inconsolata 13
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -178,20 +178,58 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 
-#bar {
-#        status_command i3status
-#}
-exec_always --no-startup-id nitrogen --set-scaled ~/Pictures/wall/red_lines_in_blue.jpg
-exec_always --no-startup-id nitrogen --set-tiled ~/Pictures/wall/Shalltear_Overlord_loli.jpg
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+bar {
+  status_command i3status
+  mode dock
+  position top
 
-exec_always --no-startup-id mons -e right
+  tray_output none
+  font pango: Inconsolata 13
+  separator_symbol 
+  #separator_symbol 
+  colors {
+    background #000000
+    statusline #aaaaaa
+    separator #ff0000
+
+                       #Border BackGr. Text
+    focused_workspace  #ff0000 #880000 #000000
+    active_workspace   #aa0000 #aa0000 #000000
+    inactive_workspace #440000 #440000 #000000
+    urgent_workspace   #ff0000 #ff0000 #ffffff
+    binding_mode       #00ff00 #000000 #ffffff
+  }
+}
+
+# Second monitor
+exec xrandr --auto --output VGA-1-1 --mode 1366x768 --left-of HDMI-0 --rotate right
+
+# WALLPAPER
+exec_always --no-startup-id nitrogen --set-zoom-fill /home/swygax/Pictures/Wallpaper/WALLPAPER
+
+# Define border size of windows
 new_window pixel 3
-
 # class                 border  backgr. text    indicator child_border
-client.focused          #222222 #222222 #ffffff #222222   #222222
-client.focused_inactive #151515 #151515 #ffffff #151515   #151515
-client.unfocused        #111111 #111111 #ffffff #111111   #111111
+client.focused          #660000 #660000 #ffffff #660000   #660000
+client.focused_inactive #111111 #111111 #ffffff #111111   #111111
+client.unfocused        #000000 #000000 #000000 #000000   #000000
 client.urgent           #ff0000 #ff0000 #ffffff #ff0000   #ff0000
 client.placeholder      #ff0000 #ff0000 #ffffff #ff0000   #ff0000
 
+# Distance of Borders
+gaps inner 10
+
+
+# Shortcut for Change Layout of keyboard
+
+# Portugues Brasil
+bindsym Mod4+Shift+p exec setxkbmap -layout br
+
+# English US
+bindsym Mod4+Shift+u exec setxkbmap -layout us
+
+# Preloading HD'S
+exec cd /home/swygax/HD500GB/*/*
+
+# Autostart terminal application on boot
+#exec --no-startup-id i3-msg 'workspace 2:help; exec "konsole -e vim /home/swygax/Documents/help.txt"'
