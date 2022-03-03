@@ -41,7 +41,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec konsole
 
 # start google-chrome
 bindsym $mod+Shift+n exec chrome
@@ -179,9 +179,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 ## SETTING I3 VARIABLES FOR COLOR SCHEME WITH BINDSYM
-set $primary-color #ff00ff
-set $secondary-color #aa00aa
-set $tertiary-color #440044
+set $primary-color #7f0000
+set $secondary-color #0f0f0f
+set $tertiary-color #111111
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -193,18 +193,18 @@ bar {
   position top
 
   tray_output none
-  font pango: Inconsolata 10
+  font pango: Hack 11
   separator_symbol  
   colors {
   background #000000
-  statusline #aaaaaa
+  statusline #ffffff
   separator $primary-color
-#                       Border  BackGr.  Text
-    focused_workspace  $primary-color $secondary-color #000000
-    active_workspace   $secondary-color $secondary-color #000000
-    inactive_workspace $tertiary-color $tertiary-color #000000
-    urgent_workspace   $primary-color $primary-color #ffffff
-    binding_mode       #00ff00 #000000 #ffffff
+#                      Border						BackGr.  					Text
+    focused_workspace  $secondary-color $primary-color 	  #000000
+    active_workspace   $secondary-color $primary-color 	  $tertiary-color
+    inactive_workspace $tertiary-color 	$secondary-color 	$primary-color
+    urgent_workspace   $primary-color 	$primary-color 		#ffffff
+    binding_mode       #00ff00 					#000000 					#ffffff
   }
 }
 
@@ -219,21 +219,21 @@ exec_always xrandr --auto --output VGA-1-1 --mode 1366x768 --left-of HDMI-0 --ro
 exec_always --no-startup-id nitrogen --set-zoom-fill /home/swygax/Pictures/Wallpaper/WALLPAPER
 
 # Define border size of windows
-new_window pixel 3 
+new_window pixel 1
 
 # Distance of Borders
-gaps inner 5
+gaps inner 0
 
-# class                 border  backgr. text    indicator child_border
-client.focused          $secondary-color $secondary-color #ffffff $secondary-color   $secondary-color
-client.focused_inactive #111111 #111111 #ffffff #111111   #111111
-client.unfocused        #000000 #000000 #000000 #000000   #000000
-client.urgent           #ff0000 #ff0000 #ffffff #ff0000   #ff0000
-client.placeholder      $primary-color $primary-color #ffffff $primary-color $primary-color
+# class                   border          backgr.         text      indicator         child_border
+client.focused            $primary-color  $primary-color  #ffffff   $primary-color    $primary-color
+client.focused_inactive   #111111         #111111         #ffffff   #111111           #111111
+client.unfocused          #000000         #000000         #000000   #000000           #000000
+client.urgent             #ff0000         #ff0000         #ffffff   #ff0000           #ff0000
+client.placeholder        $primary-color  $primary-color  #ffffff   $primary-color    $primary-color
 
 # Shortcut for Change Layout of keyboard
 
-# Portugues Brasil
+# Portugues Brasil  
 bindsym Mod4+Shift+p exec setxkbmap -layout br
 
 # English US
