@@ -212,8 +212,10 @@ bar {
 #exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Second monitor
-exec_always xrandr --auto --output VGA-1-1 --mode 1366x768 --left-of HDMI-0 --rotate right
-#exec_always xrandr --auto --output VGA-1-1 --mode 1366x768 --right-of HDMI-0
+exec_always --no-startup-id xrandr --auto --output VGA-1-1 --mode 1366x768 --left-of HDMI-0 --rotate right
+
+# Third monitor
+exec_always --no-startup-id xrandr --auto --output HDMI-1-3 --mode 1024x768 --right-of HDMI-0
 
 # WALLPAPER
 exec_always --no-startup-id nitrogen --set-zoom-fill /home/swygax/Pictures/Wallpaper/WALLPAPER
