@@ -1,0 +1,72 @@
+#/usr/bin/env bash
+
+# Verify if this script running in root or sudo
+is_root() {
+  if [ "$(id -u)" != "0" ]; then 
+    echo "You need to be root!"
+  else
+    return
+  fi
+}
+
+#Script to automatically run tasks
+time_sync() {
+  ntpd -qg
+  if [ $? == 0 ];
+  then 
+    echo "Time sync sucessfully!"
+    let count=count+1
+  else
+    error_message+="Can't syncronize time!"
+  fi
+}
+
+# mount HD in read-write format
+
+mount_fs() {
+  mount -o rw -t ntfs /dev/sda3 /home/Win
+  if [ $? == 0 ]; then 
+    echo "Partition mounted sucessfully!"
+    let count=count+1
+  else
+    error_message+="Can't mount partition!"
+  fi
+}
+
+update_packages() {
+  pacman -Syyuu --noconfirm
+  if [ $? == 0 ]; then
+    echo "System updated sucessfully"
+    let count=count+1
+  else
+    error_message="Can't update packages!"
+  fi
+}
+
+# if some function does not working return this
+Error() {
+  echo "Error: $error_message"
+  main
+}
+
+# Create file StartSystemCheck in /tmp to ~/.zshrc verify if the file system already monted before
+
+system_check() {
+  if [ $count -eq 3 ];
+  then
+    echo "Sync complete!"
+    touch /tmp/StartSystemCheck
+  else
+    Error
+  fi
+}
+
+main() {
+  is_root
+  time_sync
+  mount_fs
+  update_packages
+  system_check
+}
+
+main

