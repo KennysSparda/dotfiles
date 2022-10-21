@@ -45,9 +45,9 @@ exec_always --no-startup-id xrandr --auto --output $monitorC --mode $modeC --rig
 font pango:Terminus 7 bold
 
 ## SETTING I2 VARIABLES FOR COLOR SCHEME WITH BINDSYM
-set $primary-color #3333ff
+set $primary-color #ff3333
 set $secondary-color #444444
-set $tertiary-color #030303
+set $tertiary-color #000a0f
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -183,7 +183,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -m 'You want to exit graphical section?' -B 'Go to command line' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -m 'Voce quer sair da seção gráfica?' -B 'Ir para linha de comando' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
