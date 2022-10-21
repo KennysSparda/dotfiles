@@ -3,11 +3,13 @@
 function changeToRed(){
   cp ~/.config/i3/config_red ~/.config/i3/config
   cp ~/.config/wallpaper/config_red ~/.config/wallpaper/config
+  nitrogen --set-zoom-fill /home/swygax/.config/wallpaper/red.jpg
 }
 
 function changeToBlue(){
   cp ~/.config/i3/config_blue ~/.config/i3/config
-  cp ~/.config/wallpaper/config_blue ~/.config/wallpaper/config 
+  cp ~/.config/wallpaper/config_blue ~/.config/wallpaper/config
+  nitrogen --set-zoom-fill /home/swygax/.config/wallpaper/blue.jpg
 }
 
 menu() {
