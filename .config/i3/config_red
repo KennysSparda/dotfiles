@@ -262,3 +262,6 @@ bindsym Mod4+Shift+p exec setxkbmap -layout br
 bindsym Mod4+Shift+u exec setxkbmap -layout us
 
 exec --no-startup-id picom -CGb --experimental-backends --backend glx
+
+## Recarrega config do i3 e recarrega o i3
+exec --no-startup-id /home/$USER/.config/startup/reload.sh

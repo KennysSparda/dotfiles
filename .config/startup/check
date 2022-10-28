@@ -4,6 +4,7 @@ function check() {
   if [ -e "/tmp/StartSystemCheck" ]; then
     exit 0
   else
+    touch ~/.config/picom.conf
     echo -e "Type your password to run startup script\npress enter to continue..."
     if [ $? == 0 ]; then     
       read
@@ -13,9 +14,9 @@ function check() {
 }
 
 function run() {
-  sudo /home/$USER/.config/startup/config -x
+  ~/.config/startup/run
   sleep 5
-  clear
+#  clear
 }
 
 function main() {

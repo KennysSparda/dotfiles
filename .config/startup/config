@@ -1,9 +1,12 @@
 #/usr/bin/env bash
 
+let count=0
+
 # Verify if this script running in root or sudo
 is_root() {
   if [ "$(id -u)" != "0" ]; then 
-    echo "You need to be root!"
+    echo "You need to be root!!!"
+    exit 1
   else
     return
   fi
@@ -11,42 +14,44 @@ is_root() {
 
 #Script to automatically run tasks
 time_sync() {
+  echo "Synchronizing time.  .  ."
+
   ntpd -qg
   if [ $? == 0 ];
   then 
-    echo "Time sync sucessfully!"
-    let count=count+1
+    echo "Time Synchronizing ucessfully  !"
+    let count+=1
   else
-    error_message+="Can't syncronize time!"
+    error_message+="Can't syncronize time  !"
   fi
 }
 
 # mount HD in read-write format
 
 mount_fs() {
-  mount -o rw -t ntfs /dev/sda3 /home/Win
-  if [ $? == 0 ]; then 
-    echo "Partition mounted sucessfully!"
-    let count=count+1
+  echo "Mounting files partition.  .  ."
+
+  mount -o rw -t ntfs /dev/sda2 /home/Win
+  if [ $? == 0 ]; then
+    echo "Partition files mounted sucessfully!"
+
+    let count+=1
   else
-    error_message+="Can't mount partition!"
+    echo = "Can't mount partition files  !"
   fi
 }
 
 update_packages() {
+  echo "Updating system  !"
+
   pacman -Syyuu --noconfirm
   if [ $? == 0 ]; then
     echo "System updated sucessfully"
-    let count=count+1
+    
+    let count+=1
   else
-    error_message="Can't update packages!"
+    echo="Error: Can't update packages!"
   fi
-}
-
-# if some function does not working return this
-Error() {
-  echo "Error: $error_message"
-  main
 }
 
 # Create file StartSystemCheck in /tmp to ~/.zshrc verify if the file system already monted before
@@ -54,10 +59,13 @@ Error() {
 system_check() {
   if [ $count -eq 3 ];
   then
-    echo "Sync complete!"
+    echo "Synchronizing complete  !"
+    echo " Good codding   :)"
     touch /tmp/StartSystemCheck
   else
-    Error
+    echo "Synchronizing fails  !"
+    echo " Go resolve it!!!"
+    echo "Count number:  $count  !"
   fi
 }
 

@@ -84,7 +84,7 @@ bindsym $mod+Shift+n exec chrome
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run -nb '#444444' -sf '#000000' -sb '$primary-color' -nf '#666666' -fn 'Terminus bold-11'
+bindsym $mod+d exec --no-startup-id dmenu_run -nb '#444444' -sf '#000000' -sb '$primary-color' -nf '#666666' -fn 'Terminus bold-14'
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -262,3 +262,6 @@ bindsym Mod4+Shift+p exec setxkbmap -layout br
 bindsym Mod4+Shift+u exec setxkbmap -layout us
 
 exec --no-startup-id picom -CGb --experimental-backends --backend glx
+
+## Recarrega config do i3 e recarrega o i3
+exec --no-startup-id /home/$USER/.config/startup/reload.sh
