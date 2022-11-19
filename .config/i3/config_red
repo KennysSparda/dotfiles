@@ -243,8 +243,8 @@ exec --no-startup-id /home/swygax/.config/wallpaper/config
 
 # Define border size of windows
 # Distance of borders
-gaps inner 30
-for_window [class=".*"] border pixel 0
+gaps inner 10
+for_window [class=".*"] border pixel 1
 #                       indicator         child_border      text  
 client.focused          $primary-color    $primary-color    #ffffff $primary-color    $primary-color
 client.focused_inactive $tertiary-color   $tertiary-color   #ffffff $tertiary-color   $tertiary-color
@@ -260,8 +260,6 @@ bindsym Mod4+Shift+p exec setxkbmap -layout br
 
 # English US
 bindsym Mod4+Shift+u exec setxkbmap -layout us
-
-exec --no-startup-id picom -CGb --experimental-backends --backend glx
 
 ## Recarrega config do i3 e recarrega o i3
 exec --no-startup-id /home/$USER/.config/startup/reload.sh
